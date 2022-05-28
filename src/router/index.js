@@ -3,7 +3,8 @@ import Router from 'vue-router';
 import Login from '@/components/pages/Login';
 import Index from '@/components/CakeIndex';
 
-import Admin from '@/components/Admin/pages/Admin_Index';
+import Admin from '@/components/Admin/Admin_Index';
+import Products from '@/components/Admin/pages/Products';
 
 Vue.use(Router);
 
@@ -23,13 +24,13 @@ export default new Router({
       path: '/admin',
       name: 'admin',
       component: Admin,
-      // children: [
-      //   {
-      //     path: 'Admin_Index',
-      //     name: 'Admin_Index',
-      //     component: Admin,
-      //   },
-      // ],
+      children: [
+        {
+          path: 'Products',
+          name: 'Products',
+          component: Products,
+        },
+      ],
     },
   ],
 });

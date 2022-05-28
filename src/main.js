@@ -4,13 +4,15 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
-import axion from 'axios';
+import axios from 'axios';
 import Vueaxion from 'vue-axios';
 import 'bootstrap';
 
 Vue.config.productionTip = false;
 
-Vue.use(Vueaxion, axion);
+axios.defaults.withCredentials = true;
+
+Vue.use(Vueaxion, axios);
 
 /* eslint-disable no-new */
 new Vue({
