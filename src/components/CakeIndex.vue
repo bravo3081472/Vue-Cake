@@ -63,21 +63,13 @@
         </div>
 
         <!-- 燈箱左右切換 -->
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-target="#myCarousel"
-          data-slide="prev"
-        >
+        <button class="carousel-control-prev" type="button" data-target="#myCarousel"
+          data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-target="#myCarousel"
-          data-slide="next"
-        >
+        <button class="carousel-control-next" type="button" data-target="#myCarousel"
+          data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </button>
@@ -91,16 +83,9 @@
         <!-- Three columns of text below the carousel -->
         <div class="row">
           <div class="col-lg-4">
-            <svg
-              class="bd-placeholder-img rounded-circle"
-              width="140"
-              height="140"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Placeholder: 140x140"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+              xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+              preserveAspectRatio="xMidYMid slice" focusable="false">
               <title>Placeholder</title>
               <rect width="100%" height="100%" fill="#777" />
               <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
@@ -117,16 +102,9 @@
           </div>
           <!-- /.col-lg-4 -->
           <div class="col-lg-4">
-            <svg
-              class="bd-placeholder-img rounded-circle"
-              width="140"
-              height="140"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Placeholder: 140x140"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+              xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+              preserveAspectRatio="xMidYMid slice" focusable="false">
               <title>Placeholder</title>
               <rect width="100%" height="100%" fill="#777" />
               <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
@@ -143,16 +121,9 @@
           </div>
           <!-- /.col-lg-4 -->
           <div class="col-lg-4">
-            <svg
-              class="bd-placeholder-img rounded-circle"
-              width="140"
-              height="140"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Placeholder: 140x140"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+              xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+              preserveAspectRatio="xMidYMid slice" focusable="false">
               <title>Placeholder</title>
               <rect width="100%" height="100%" fill="#777" />
               <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
@@ -187,16 +158,10 @@
             </p>
           </div>
           <div class="col-md-5">
-            <svg
-              class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-              width="500"
-              height="500"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Placeholder: 500x500"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+              width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img"
+              aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
+              focusable="false">
               <title>Placeholder</title>
               <rect width="100%" height="100%" fill="#eee" />
               <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
@@ -219,16 +184,10 @@
             </p>
           </div>
           <div class="col-md-5 order-md-1">
-            <svg
-              class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-              width="500"
-              height="500"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Placeholder: 500x500"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+              width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img"
+              aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
+              focusable="false">
               <title>Placeholder</title>
               <rect width="100%" height="100%" fill="#eee" />
               <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
@@ -251,16 +210,10 @@
             </p>
           </div>
           <div class="col-md-5">
-            <svg
-              class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-              width="500"
-              height="500"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Placeholder: 500x500"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+              width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img"
+              aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
+              focusable="false">
               <title>Placeholder</title>
               <rect width="100%" height="100%" fill="#eee" />
               <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
@@ -297,7 +250,6 @@ export default {
 </script>
 
 <style scoped>
-
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
@@ -324,7 +276,6 @@ export default {
   object-fit: cover;
 }
 
-
 /* MARKETING CONTENT
 -------------------------------------------------- */
 
@@ -337,10 +288,9 @@ export default {
   font-weight: 400;
 }
 .marketing .col-lg-4 p {
-  margin-right: .75rem;
-  margin-left: .75rem;
+  margin-right: 0.75rem;
+  margin-left: 0.75rem;
 }
-
 
 /* Featurettes
 ------------------------- */
@@ -353,9 +303,8 @@ export default {
 .featurette-heading {
   font-weight: 300;
   line-height: 1;
-  letter-spacing: -.05rem;
+  letter-spacing: -0.05rem;
 }
-
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */

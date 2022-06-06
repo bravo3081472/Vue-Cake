@@ -1,7 +1,9 @@
 <template>
   <div>
+    <!-- NOTE: 讀取畫面 -->
+    <loading :active.sync="isLoading"></loading>
     <div class="text-right mt-5">
-      <button class="btn btn-primary my-3" @click="openProductModal">建立新的產品</button>
+      <button class="btn btn-primary my-3" @click="openProductModal(true)">建立新的產品</button>
     </div>
     <table class="table table-responsive-sm mt-2">
       <thead>
@@ -11,7 +13,7 @@
           <th width="80em">原價</th>
           <th width="80em">售價</th>
           <th width="100em">是否啟用</th>
-          <th width="80em">編輯</th>
+          <th width="140em">編輯</th>
         </tr>
       </thead>
       <tbody>
@@ -19,19 +21,32 @@
           <td>{{ item.category }}</td>
           <td>{{ item.title }}</td>
           <td class="text-right">
-            {{ item.origin_price }}
+            {{ item.origin_price | currency }}
           </td>
           <td class="text-right">
-            {{ item.price }}
+            {{ item.price | currency}}
+          </td>
+          <td>
+            <span v-if="item.is_enabled" class="text-success">已啟用</span>
+            <span v-else>未啟用</span>
+          </td>
+          <td>
+            <button class="btn btn-outline-primary btn-sm"
+              @click="openProductModal(false, item)">編輯</button>
+            <button class="btn btn-outline-primary btn-sm"
+              @click="removeProduct(item.id)">刪除</button>
           </td>
         </tr>
       </tbody>
     </table>
 
+    <!-- NOTE: 分頁 component -->
+    <pagination :pagination='pagination' @trigger="getProducts"></pagination>
+
     <!-- Modal -->
     <div class="modal fade" id="ProductModal" tabindex="-1" role="dialog"
       aria-labelledby="ProductModal" aria-hidden="true">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="ProductModal">Modal title</h5>
@@ -49,9 +64,10 @@
                 </div>
                 <div class="form-group">
                   <label class="customFile">或 上傳圖片
-                    <i class="fas fa-spinner fa-spin"></i>
+                    <i class="fas fa-spinner fa-spin" v-if="status.fileuploading"></i>
                   </label>
-                  <input type="files" id="customFile" class="form-control" ref="files">
+                  <input type="file" id="customFile" class="form-control" ref="files"
+                    @change="uploadFile">
                 </div>
                 <img class="img-fluid" alt="" :src="Product.imageUrl">
               </div>
@@ -118,34 +134,62 @@
 </template>
 
 <script>
-// TODO: 新增商品
-// TODO: 刪除商品
-// TODO: loading 畫面
 // TODO: 千分位
-// TODO: 分頁功能
 import $ from 'jquery';
 
+import pagination from '@/components/pagination';
+
 export default {
+  components: {
+    pagination,
+  },
+
   data() {
     return {
       Products: [],
       Product: {},
+      isNew: false,
+      isLoading: false,
+      status: {
+        fileuploading: false, // 上傳圖片 icon 切換
+      },
+      pagination: '',
     };
   },
   methods: {
-    openProductModal() {
+    // NOTE: 開啟 ProductModal
+    openProductModal(isNew, item) {
+      this.$refs.files.value = ''; // 初始化上傳路徑
+      // 新舊資料判斷
+      if (isNew) {
+        this.Product = {};
+        this.isNew = true;
+      } else {
+        this.Product = Object.assign({}, item);
+        this.isNew = false;
+      }
       $('#ProductModal').modal('show');
     },
-    getProducts() {
-      const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/products?page=:page`;
+    // NOTE: 取得 Products
+    getProducts(page = 1) {
+      this.isLoading = true; // loading toggle
+      const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/products?page=${page}`;
       this.$http.get(api).then((response) => {
         console.log(response.data);
+        this.isLoading = false;
         this.Products = response.data.products;
+        this.pagination = response.data.pagination;
       });
     },
+    // NOTE: 新增編輯 Product
     addProduct() {
-      const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/product`;
-      this.$http.post(api, { data: this.Product }).then((response) => {
+      let api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/product`;
+      let httpMethod = 'post';
+      if (!this.isNew) {
+        api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/product/${this.Product.id}`;
+        httpMethod = 'put';
+      }
+      this.$http[httpMethod](api, { data: this.Product }).then((response) => {
         console.log(response.data);
         if (response.data.success) {
           $('#ProductModal').modal('hide');
@@ -154,6 +198,38 @@ export default {
           $('#ProductModal').modal('hide');
           this.getProducts();
           console.log('新增失敗');
+        }
+      });
+    },
+    // NOTE: 刪除 Product
+    removeProduct(id) {
+      const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/product/${id}`;
+      this.$http.delete(api).then((response) => {
+        console.log(response.data);
+        this.getProducts();
+      });
+    },
+    // NOTE: 上傳圖片
+    uploadFile() {
+      console.log(this);
+      this.status.fileuploading = true; // upload icon
+      const uploadFile = this.$refs.files.files[0];
+      // formData
+      const formData = new FormData();
+      formData.append('file-to-upload', uploadFile);
+      const url = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/upload`;
+      this.$http.post(url, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }).then((response) => {
+        console.log(response);
+        if (response.data.success) {
+          this.status.fileuploading = false; // upload icon toggle
+          this.$set(this.Product, 'imageUrl', response.data.imageUrl); // imageUrl v-model
+        } else {
+          // * Error Message
+          this.$bus.$emit('message:push', response.data.message, 'danger');
         }
       });
     },

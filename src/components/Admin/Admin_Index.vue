@@ -1,6 +1,7 @@
 <template>
   <div>
     <AdminNavber></AdminNavber>
+    <Alert></Alert>
     <div class="container-fluid">
       <div class="row">
         <AdminSideber></AdminSideber>
@@ -15,11 +16,13 @@
 <script>
 import AdminNavber from '../Admin/Admin_Navber';
 import AdminSideber from './Admin_Sideber';
+import Alert from '../AlertMessage';
 
 export default {
   components: {
     AdminNavber,
     AdminSideber,
+    Alert,
   },
   created() {
     // * 送出 token 給後端
