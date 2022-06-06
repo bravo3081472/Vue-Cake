@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Login from '@/components/pages/Login';
 import Index from '@/components/CakeIndex';
+import Coupon from '@/components/pages/Coupon';
+import CostomerOrders from '@/components/pages/CostomerOrders';
 
 import Admin from '@/components/Admin/Admin_Index';
 import Products from '@/components/Admin/pages/Products';
@@ -19,6 +21,16 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login,
+    },
+    {
+      path: '/Coupon',
+      name: 'Coupon',
+      component: Coupon,
+    },
+    {
+      path: '/CostomerOrders',
+      name: 'CostomerOrders',
+      component: CostomerOrders,
     },
     {
       path: '/admin',
