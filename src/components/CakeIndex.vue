@@ -75,40 +75,16 @@
         </button>
       </div>
 
-      <!-- START THE FEATURETTES -->
-      <div class="container marketing">
+      <div class="container">
         <div class="row">
           <div class="col-md-3">
             <Sideber></Sideber>
           </div>
-          <div class="col-md-5">
-            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll
-                blow your mind.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula
-              porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl
-              consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-          </div>
-          <div class="col-md-4 mt-5">
-            <img class="img-fluid mx-auto" src="../assets/Cakeindex/featurette2.jpg" alt="">
+          <div class="col-md">
+            <router-view></router-view>
           </div>
         </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-          <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">關於 <span class="text-muted">我們</span></h2>
-            <p class="lead">這是一個展示網站</p>
-          </div>
-          <div class="col-md-5">
-            <img class="img-fluid mx-auto" src="../assets/Cakeindex/featurette1.jpg" alt="">
-          </div>
-        </div>
-
-        <hr class="featurette-divider">
-        <!-- /END THE FEATURETTES -->
-
-      </div><!-- /.container -->
+      </div>
 
       <!-- FOOTER -->
       <footer class="container">

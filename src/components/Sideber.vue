@@ -8,7 +8,7 @@
               商品一覽 <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#">
               芒果季限定
             </a>
@@ -22,7 +22,7 @@
             <a class="nav-link" href="#">
               冷藏甜點
             </a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </nav>
