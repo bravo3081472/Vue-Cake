@@ -75,12 +75,12 @@
         </button>
       </div>
 
-      <div class="container">
+      <div class="container-md-12 mx-5">
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-2">
             <Sideber></Sideber>
           </div>
-          <div class="col-md">
+          <div class="col-md-10">
             <router-view></router-view>
           </div>
         </div>

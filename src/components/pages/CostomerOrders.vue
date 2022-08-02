@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-md md-4" v-for="item in Products" :key=item.id>
+      <div class="col-md-4 md-4" v-for="item in Products" :key=item.id>
         <div class="card border-0 shadow-sm">
           <div style="height: 150px; background-size: cover; background-position: center"
             :style="{backgroundImage: `url(${item.imageUrl})`}">
@@ -24,7 +24,8 @@
               <i class="fas fa-spinner fa-spin"></i>
               查看更多
             </button>
-            <button type="button" class="btn btn-outline-danger btn-sm ml-auto">
+            <button type="button" class="btn btn-outline-danger btn-sm ml-auto"
+              @click="addCart(item.id)">
               <i class="fas fa-spinner fa-spin"></i>
               加到購物車
             </button>
@@ -85,7 +86,7 @@ export default {
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/products?page=:page`;
       const vm = this;
       this.$http.get(api).then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         vm.Products = response.data.products;
       });
     },
@@ -93,9 +94,21 @@ export default {
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/product/${id}`;
       const vm = this;
       this.$http.get(api).then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         vm.Product = response.data.product;
         $('#productModal').modal('show');
+      });
+    },
+    addCart(id, qty = 1) {
+      const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/cart`;
+      // const vm = this;
+      const cart = {
+        product_id: id,
+        qty,
+      };
+      this.$http.post(api, { data: cart }).then((response) => {
+        console.log(response.data);
+        $('#productModal').modal('hide');
       });
     },
   },

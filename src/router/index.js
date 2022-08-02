@@ -6,8 +6,9 @@ import Login from '@/components/pages/Login';
 import Index from '@/components/CakeIndex';
 // import Featurettes from '@/component/pages/Featurettes';
 import CostomerOrders from '@/components/pages/CostomerOrders';
-
+import Cart from '@/components/pages/Cart';
 import Coupon from '@/components/pages/Coupon';
+
 
 // Admin
 import AdminDashboard from '@/components/Admin/Admin_Dashboard';
@@ -17,10 +18,10 @@ Vue.use(Router);
 
 export default new Router({
   routes: [
-    {
-      path: '*',
-      redirect: '/',
-    },
+    // {
+    //   path: '*',
+    //   redirect: '/',
+    // },
     {
       path: '/',
       name: 'Index',
@@ -28,9 +29,15 @@ export default new Router({
       meta: { requiresAuth: false },
       children: [
         {
-          path: '/CostomerOrders',
+          path: 'costomerOrders',
           name: 'CostomerOrders',
           component: CostomerOrders,
+          meta: { requiresAuth: false },
+        },
+        {
+          path: 'cart',
+          name: 'Cart',
+          component: Cart,
           meta: { requiresAuth: false },
         },
       ],
@@ -42,22 +49,22 @@ export default new Router({
       meta: { requiresAuth: false },
     },
     {
-      path: '/Coupon',
-      name: 'Coupon',
-      component: Coupon,
-      meta: { requiresAuth: false },
-    },
-    {
       path: '/admin',
       name: 'Admin_Dashboard',
       component: AdminDashboard,
       meta: { requiresAuth: true },
       children: [
         {
-          path: 'Products',
+          path: 'products',
           name: 'Products',
           component: Products,
           meta: { requiresAuth: true },
+        },
+        {
+          path: 'coupon',
+          name: 'Coupon',
+          component: Coupon,
+          meta: { requiresAuth: false },
         },
       ],
     },
