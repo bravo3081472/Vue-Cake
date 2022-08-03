@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading :active.sync="isLoading"></loading>
     <div class="text-right mt-5">
       <button class="btn btn-primary my-3" @click="OpenCouponModal(true)">新增優惠碼</button>
     </div>
@@ -29,6 +30,9 @@
         </tr>
       </tbody>
     </table>
+
+    <!-- NOTE: Pagination Component -->
+    <pagination :pagination='pagination' @trigger="GetCoupons"></pagination>
 
     <!-- Modal -->
     <div class="modal fade" id="CouponModal" tabindex="-1" role="dialog"
@@ -89,8 +93,12 @@
 
 <script>
 import $ from 'jquery';
+import pagination from '@/components/pagination';
 
 export default {
+  components: {
+    pagination,
+  },
   data() {
     return {
       Coupons: [],
@@ -100,9 +108,11 @@ export default {
       status: {
         modalBehaviorToggle: '',
       },
+      pagination: '',
     };
   },
   methods: {
+    // NOTE: Open Modal
     OpenCouponModal(isNew, item) {
       if (isNew) {
         this.Coupon = {};
@@ -117,6 +127,7 @@ export default {
       }
       $('#CouponModal').modal('show');
     },
+    // NOTE: Add & Edit & Del
     /**
      * 資料行為
      * @function
@@ -157,19 +168,16 @@ export default {
         this.GetCoupons();
       });
     },
-    GetCoupons() {
-      const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/coupons?page=:page`;
+    // NOTE: Get Coupons Data
+    GetCoupons(page = 1) {
+      const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/coupons?page=${page}`;
       const vm = this;
+      vm.isLoading = true;
       this.$http.get(api).then((response) => {
         console.log(response.data);
         vm.Coupons = response.data.coupons;
-      });
-    },
-    DelCoupon(CouponId) {
-      const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/coupon/${CouponId}`;
-      this.$http.delete(api).then((response) => {
-        console.log(response.data);
-        this.GetCoupons();
+        vm.pagination = response.data.pagination;
+        vm.isLoading = false;
       });
     },
   },
