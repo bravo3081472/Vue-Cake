@@ -23,7 +23,7 @@
           <td>
             <button class="btn btn-outline-primary btn-sm" @click="OpenCouponModal(false, item)">
               <i class="fa-solid fa-pen-to-square"></i> 編輯</button>
-            <button class="btn btn-outline-danger btn-sm" @click="DelCoupon(item.id)">
+            <button class="btn btn-outline-danger btn-sm" @click="DataBehavior('Del', item.id)">
               <i class="fa-solid fa-trash-can"></i> 刪除</button>
           </td>
         </tr>
@@ -73,8 +73,10 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" @click="AddCoupon">Save
-                  changes</button>
+                <button v-if="status.modalBehaviorToggle === 'Add'" type="button"
+                  class="btn btn-primary" @click="DataBehavior('Add')">確認新增</button>
+                <button v-if="status.modalBehaviorToggle === 'Edit'" type="button"
+                  class="btn btn-primary" @click="DataBehavior('Edit')">更改資料</button>
               </div>
             </div>
           </div>
@@ -95,6 +97,9 @@ export default {
       Coupon: {},
       isLoading: false,
       isNew: false,
+      status: {
+        modalBehaviorToggle: '',
+      },
     };
   },
   methods: {
@@ -102,17 +107,25 @@ export default {
       if (isNew) {
         this.Coupon = {};
         this.isNew = true;
+        this.status.modalBehaviorToggle = 'Add';
       } else {
         this.Coupon = Object.assign({}, item);
         // 時間單位轉換 毫秒 轉換 2022-8-2 字串
         this.Coupon.due_date = new Date(item.due_date).toISOString().slice(0, 10);
         this.isNew = false;
+        this.status.modalBehaviorToggle = 'Edit';
       }
       $('#CouponModal').modal('show');
     },
-    AddCoupon() {
-      let api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/coupon`;
-      let httpMethod = 'post';
+    /**
+     * 資料行為
+     * @function
+     * @param dataBehaviorTrigger {String} - 用於觸發哪種資料行為
+     * @param delCouponId {String} - 刪除哪筆 ID
+     */
+    DataBehavior(dataBehaviorTrigger, delCouponId) {
+      let api;
+      let httpMethod;
       const vm = this;
       const newCoupon = {
         title: vm.Coupon.title,
@@ -121,9 +134,21 @@ export default {
         due_date: Date.parse(vm.Coupon.due_date),
         code: vm.Coupon.code,
       };
-      if (!vm.isNew) {
-        api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/coupon/${vm.Coupon.id}`;
-        httpMethod = 'put';
+      switch (dataBehaviorTrigger) {
+        case 'Add':
+          api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/coupon`;
+          httpMethod = 'post';
+          break;
+        case 'Edit':
+          api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/coupon/${vm.Coupon.id}`;
+          httpMethod = 'put';
+          break;
+        case 'Del':
+          api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/coupon/${delCouponId}`;
+          httpMethod = 'delete';
+          break;
+        default:
+          break;
       }
       this.$http[httpMethod](api, { data: newCoupon }).then((response) => {
         console.log(response.data);
