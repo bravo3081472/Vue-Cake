@@ -4,7 +4,7 @@
     <Alert></Alert>
     <div class="container-fluid">
       <div class="row">
-        <AdminSideber></AdminSideber>
+        <AdminSidebar></AdminSidebar>
         <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
           <router-view></router-view>
         </main>
@@ -15,13 +15,13 @@
 
 <script>
 import AdminNavber from '../Admin/Admin_Navber';
-import AdminSideber from './Admin_Sideber';
+import AdminSidebar from './Admin_Sidebar';
 import Alert from '../AlertMessage';
 
 export default {
   components: {
     AdminNavber,
-    AdminSideber,
+    AdminSidebar,
     Alert,
   },
   created() {

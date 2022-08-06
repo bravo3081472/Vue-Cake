@@ -78,7 +78,7 @@
       <div class="container-md-12 mx-5">
         <div class="row">
           <div class="col-md-2">
-            <Sideber></Sideber>
+            <Sidebar></Sidebar>
           </div>
           <div class="col-md-10">
             <router-view></router-view>
@@ -100,12 +100,12 @@
 
 <script>
 import Navber from './Navber';
-import Sideber from './Sideber';
+import Sidebar from './Sidebar';
 
 export default {
   components: {
     Navber,
-    Sideber,
+    Sidebar,
   },
 };
 </script>
