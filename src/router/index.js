@@ -4,9 +4,9 @@ import Router from 'vue-router';
 // User
 import Login from '@/components/pages/Login';
 import Index from '@/components/CakeIndex';
-import CostomerOrders from '@/components/pages/CostomerOrders';
+import CustomerOrders from '@/components/pages/CustomerOrders';
 import Cart from '@/components/pages/Cart';
-import CostomerCheckout from '@/components/pages/CostomerCheckout';
+import CustomerCheckout from '@/components/pages/CustomerCheckout';
 
 // 未使用
 // import Featurettes from '@/component/pages/Featurettes'; // 首頁廣告頁面
@@ -31,9 +31,9 @@ export default new Router({
       meta: { requiresAuth: false },
       children: [
         {
-          path: 'costomerOrders',
-          name: 'CostomerOrders',
-          component: CostomerOrders,
+          path: 'customerOrders',
+          name: 'CustomerOrders',
+          component: CustomerOrders,
           meta: { requiresAuth: false },
         },
         {
@@ -43,9 +43,9 @@ export default new Router({
           meta: { requiresAuth: false },
         },
         {
-          path: 'costomerCheckout/:orderId',
-          name: 'CostomerCheckout',
-          component: CostomerCheckout,
+          path: 'customerCheckout/:orderId',
+          name: 'CustomerCheckout',
+          component: CustomerCheckout,
           meta: { requiresAuth: false },
         },
       ],

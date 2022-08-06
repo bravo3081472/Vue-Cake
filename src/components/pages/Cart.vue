@@ -157,7 +157,7 @@ export default {
       this.$http.post(api, { data: order }).then((response) => {
         console.log(response.data);
         vm.isLoading = false;
-        vm.$router.push(`costomerCheckout/${response.data.orderId}`);
+        vm.$router.push(`customerCheckout/${response.data.orderId}`);
       });
     },
   },

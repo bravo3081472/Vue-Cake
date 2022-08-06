@@ -4,14 +4,14 @@
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="#" @click.prevent="GoCostomerOrders">
-              商品一覽 <span class="sr-only">(current)</span>
-            </a>
+            <router-link class="nav-link active" to="/CustomerOrders">商品一覽
+              <span class="sr-only">(current)</span>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" @click.prevent="GoCart">
+            <router-link class="nav-link" to="/Cart">
               購物車
-            </a>
+            </router-link>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link" href="#">
@@ -33,19 +33,6 @@
     </nav>
   </div>
 </template>
-
-<script>
-export default {
-  methods: {
-    GoCostomerOrders() {
-      this.$router.push('/CostomerOrders');
-    },
-    GoCart() {
-      this.$router.push('/Cart');
-    },
-  },
-};
-</script>
 
 <style scoped>
 /*
