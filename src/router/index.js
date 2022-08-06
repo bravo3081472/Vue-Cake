@@ -7,12 +7,12 @@ import Index from '@/components/CakeIndex';
 // import Featurettes from '@/component/pages/Featurettes';
 import CostomerOrders from '@/components/pages/CostomerOrders';
 import Cart from '@/components/pages/Cart';
-import Coupon from '@/components/pages/Coupon';
 
 
 // Admin
 import AdminDashboard from '@/components/Admin/Admin_Dashboard';
 import Products from '@/components/Admin/pages/Products';
+import Coupon from '@/components/Admin/pages/Coupon';
 
 Vue.use(Router);
 
