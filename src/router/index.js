@@ -4,10 +4,12 @@ import Router from 'vue-router';
 // User
 import Login from '@/components/pages/Login';
 import Index from '@/components/CakeIndex';
-// import Featurettes from '@/component/pages/Featurettes';
 import CostomerOrders from '@/components/pages/CostomerOrders';
 import Cart from '@/components/pages/Cart';
+import CostomerCheckout from '@/components/pages/CostomerCheckout';
 
+// 未使用
+// import Featurettes from '@/component/pages/Featurettes'; // 首頁廣告頁面
 
 // Admin
 import AdminDashboard from '@/components/Admin/Admin_Dashboard';
@@ -38,6 +40,12 @@ export default new Router({
           path: 'cart',
           name: 'Cart',
           component: Cart,
+          meta: { requiresAuth: false },
+        },
+        {
+          path: 'costomerCheckout/:orderId',
+          name: 'CostomerCheckout',
+          component: CostomerCheckout,
           meta: { requiresAuth: false },
         },
       ],
