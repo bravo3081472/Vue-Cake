@@ -1,8 +1,7 @@
 <template>
   <div>
-    <Navber></Navber>
+    <Navbar></Navbar>
     <main role="main">
-
       <!-- 燈箱 -->
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- 燈箱進度條 -->
@@ -75,12 +74,12 @@
         </button>
       </div>
 
-      <div class="container-md-12 mx-5">
+      <div class="container mt-5">
         <div class="row">
-          <div class="col-md-2">
+          <!-- <div class="col-md-2">
             <Sidebar></Sidebar>
-          </div>
-          <div class="col-md-10">
+          </div> -->
+          <div class="col-md-12">
             <router-view></router-view>
           </div>
         </div>
@@ -99,31 +98,24 @@
 </template>
 
 <script>
-import Navber from './Navber';
-import Sidebar from './Sidebar';
+import Navbar from './Navbar';
 
 export default {
   components: {
-    Navber,
-    Sidebar,
+    Navbar,
   },
 };
 </script>
 
 <style scoped>
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
-
-/* Carousel base class */
-.carousel {
+/* 燈箱 base class */
+/* .carousel {
   margin-bottom: 4rem;
-}
-/* Since positioning the image, we need to help out the caption */
+} */
 .carousel-caption {
   bottom: 3rem;
   z-index: 10;
 }
-
 /* 撐高 img 區塊 */
 .carousel-item {
   height: 30rem;
