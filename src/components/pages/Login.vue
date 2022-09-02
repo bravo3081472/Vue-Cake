@@ -1,5 +1,3 @@
-// TODO: 製作登入 modal
-
 <template>
   <div class="container h-100vh">
     <div class="row align-items-center h-100">
