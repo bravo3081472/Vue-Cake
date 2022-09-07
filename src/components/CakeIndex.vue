@@ -74,7 +74,7 @@
         </button>
       </div>
 
-      <div class="container mt-5">
+      <div id="products_list" class="container mt-5">
         <div class="row">
           <!-- <div class="col-md-2">
             <Sidebar></Sidebar>
@@ -86,12 +86,14 @@
       </div>
 
       <!-- FOOTER -->
-      <footer class="container">
-        <p class="float-right"><a href="#">Back to top</a></p>
-        <p>
-          &copy; 2017-2021 Company, Inc. &middot;
-          <a href="#">Privacy</a> &middot; <a href="#">Terms</a>
-        </p>
+      <footer class="container-fluid mt-3 border-top">
+        <div class="footer">
+          <p class="footer_text">
+            &copy; 2017-2021 Company, Inc. &middot;
+            <a href="#">Privacy</a> &middot; <a href="#">Terms</a>
+          </p>
+          <a href="#" class="btn btn-outline-primary footer_link">Back to top</a>
+        </div>
       </footer>
     </main>
   </div>
@@ -107,7 +109,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /* 燈箱 base class */
 /* .carousel {
   margin-bottom: 4rem;
@@ -119,44 +121,29 @@ export default {
 /* 撐高 img 區塊 */
 .carousel-item {
   height: 30rem;
+  & > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30rem;
+    min-width: 100%;
+    object-fit: cover;
+  }
 }
-.carousel-item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 30rem;
-  min-width: 100%;
-  object-fit: cover;
-}
-
-/* MARKETING CONTENT
--------------------------------------------------- */
-
-/* Center align the text within the three columns below the carousel */
-.marketing .col-lg-4 {
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-.marketing h2 {
-  font-weight: 400;
-}
-.marketing .col-lg-4 p {
-  margin-right: 0.75rem;
-  margin-left: 0.75rem;
-}
-
-/* Featurettes
-------------------------- */
-
-.featurette-divider {
-  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
-}
-
-/* Thin out the marketing headings */
-.featurette-heading {
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -0.05rem;
+.footer {
+  display: flex;
+  width: 50%;
+  margin: auto;
+  padding: 20px 0;
+  a {
+    text-decoration: none;
+  }
+  .footer_text {
+    margin: auto 0 auto;
+  }
+  .footer_link {
+    margin-left: auto;
+  }
 }
 
 /* RESPONSIVE CSS

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-md-4 md-4" v-for="item in Products" :key=item.id>
+      <div class="col-md-4 md-4" v-for="item in pagingProducts" :key=item.id>
         <div class="card card_item">
           <div class="card_item_image" :style="{backgroundImage: `url(${item.imageUrl})`}">
             <span class="badge badge-secondary card_item_sort">{{ item.category }}</span>
@@ -33,6 +33,9 @@
         </div>
       </div>
     </div>
+
+    <pagination class="d-flex mt-3 justify-content-center" :pagination="pagination"
+    @trigger="GetProducts"></pagination>
 
     <!-- Modal -->
     <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productsModalLabel"
@@ -85,22 +88,62 @@
 
 <script>
 import $ from 'jquery';
+import pagination from '@/components/pagination';
 
 export default {
+  components: {
+    pagination,
+  },
   data() {
     return {
       Products: [],
       Product: {},
       productCount: 1,
+      pagination: '',
+      pagingProducts: [],
     };
   },
   methods: {
-    GetProducts() {
-      const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/products?page=:page`;
+    GetProducts(page = 1) {
+      const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/products`;
       const vm = this;
       this.$http.get(api).then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
         vm.Products = response.data.products;
+
+        // 自定義分頁
+        function FilterPaginationData(Data, nowPage) {
+          // 分析資料
+          const dataTotal = Data.length;
+          const perPage = 6;
+          const pageTotal = Math.ceil(dataTotal / perPage);
+          console.log(dataTotal, perPage, pageTotal);
+          let currentPage = nowPage;
+          console.log(currentPage);
+          // 避免當前分頁超出範圍
+          if (currentPage > pageTotal) {
+            currentPage = pageTotal;
+          }
+          // 計算分頁資料範圍
+          const minData = ((currentPage * perPage) - perPage) + 1;
+          const maxData = (currentPage * perPage);
+          // 建立範圍內的資料
+          const newData = [];
+          Data.forEach((item, index) => {
+            const num = index + 1;
+            if (num >= minData && num <= maxData) {
+              newData.push(item);
+            }
+          });
+          vm.pagingProducts = newData;
+          vm.pagination = {
+            total_pages: pageTotal,
+            current_page: currentPage,
+            has_pre: currentPage > 1,
+            has_next: currentPage < pageTotal,
+          };
+        }
+        FilterPaginationData(vm.Products, page);
       });
     },
     GetProduct(id) {
@@ -189,7 +232,7 @@ export default {
     -webkit-box-orient: vertical;
   }
   .card_item_count {
-    @extend %input_count
+    @extend %input_count;
   }
   .card_item_price {
     display: flex;
