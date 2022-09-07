@@ -74,11 +74,9 @@
         </button>
       </div>
 
+      <!-- BODY -->
       <div id="products_list" class="container mt-5">
         <div class="row">
-          <!-- <div class="col-md-2">
-            <Sidebar></Sidebar>
-          </div> -->
           <div class="col-md-12">
             <router-view></router-view>
           </div>
@@ -105,6 +103,9 @@ import Navbar from './Navbar';
 export default {
   components: {
     Navbar,
+  },
+  created() {
+    this.$router.push('/customerOrders');
   },
 };
 </script>

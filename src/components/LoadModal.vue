@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import $ from 'jquery';
+
 export default {
   data() {
     return {
@@ -55,6 +57,7 @@ export default {
           const token = response.data.token;
           const expired = response.data.expired;
           document.cookie = `hexToken=${token}; expired=${new Date(expired)}`;
+          $('#LoadModel').modal('hide');
           vm.$router.push('/admin/Products');
         } else {
           // TODO: 製作登入失敗 modal
