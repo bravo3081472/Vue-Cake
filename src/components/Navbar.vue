@@ -21,17 +21,6 @@
               </li>
 
             </ul>
-            <!-- <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search"
-              aria-label="Search" />
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-              Search
-            </button>
-          </form> -->
-            <!-- <button class="btn btn-outline-success my-2 mx-2 my-sm-0" type="submit"
-              @click="GoToLogin">
-              登入
-            </button> -->
             <button class="btn btn-outline-success my-2 mx-2 my-sm-0" type="submit"
               data-toggle="modal" data-target="#LoadModel">
               登入
@@ -42,7 +31,7 @@
       </nav>
     </header>
 
-    <!-- Modal -->
+    <!-- NOTE: component - LoadModal 登入功能 -->
     <LoadModal></LoadModal>
   </div>
 </template>
@@ -54,15 +43,11 @@ export default {
   components: {
     LoadModal,
   },
-  methods: {
-    GoToLogin() {
-      this.$router.push('/login');
-    },
-  },
 };
 </script>
 
 <style scoped>
+/* NOTE: css */
 .logo {
   font-size: 30px;
 }

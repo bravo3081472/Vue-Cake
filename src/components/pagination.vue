@@ -27,6 +27,14 @@
 export default {
   props: ['pagination'],
   methods: {
+    // NOTE: Func - pagination 控制
+    /**
+     * @param
+     * {{ total_pages: number,
+     *    current_page: number,
+     *    has_pre: boolean,
+     *    has_next: boolean,}} page pagination
+     */
     upDataProduct(page) {
       this.$emit('trigger', page);
     },

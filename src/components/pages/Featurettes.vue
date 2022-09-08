@@ -1,4 +1,5 @@
 <template>
+  <!-- XXX: 暫定 Banner 用 -->
   <div>
     <div class="col-md-5">
       <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll

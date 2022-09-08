@@ -47,6 +47,7 @@ export default {
     };
   },
   methods: {
+    // NOTE: Func - Login API Admin Data
     signin() {
       const vm = this;
       const api = `${process.env.APIPATH}/admin/signin`;

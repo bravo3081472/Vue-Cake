@@ -25,6 +25,7 @@ export default {
     Alert,
   },
   created() {
+    // NOTE: func - login token
     // * 送出 token 給後端
     const myCookie = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
     this.$http.defaults.headers.common.Authorization = myCookie;

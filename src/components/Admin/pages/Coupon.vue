@@ -31,10 +31,10 @@
       </tbody>
     </table>
 
-    <!-- NOTE: Pagination Component -->
+    <!-- NOTE: Component - "Pagination" -->
     <pagination :pagination='pagination' @trigger="GetCoupons"></pagination>
 
-    <!-- Modal -->
+    <!-- NOTE: Modal - Add 優惠碼 -->
     <div class="modal fade" id="CouponModal" tabindex="-1" role="dialog"
       aria-labelledby="CouponModal" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
@@ -112,7 +112,7 @@ export default {
     };
   },
   methods: {
-    // NOTE: Open Modal
+    // NOTE: Func - Open CouponModal
     OpenCouponModal(isNew, item) {
       if (isNew) {
         this.Coupon = {};
@@ -127,12 +127,11 @@ export default {
       }
       $('#CouponModal').modal('show');
     },
-    // NOTE: Add & Edit & Del
+    // NOTE: Func - Add & Edit & Del 優惠碼
     /**
-     * 資料行為
-     * @function
-     * @param dataBehaviorTrigger {String} - 用於觸發哪種資料行為
-     * @param delCouponId {String} - 刪除哪筆 ID
+     * 判斷資料行為
+     * @param {String} dataBehaviorTrigger - 用於觸發哪種資料行為
+     * @param {String} delCouponId - 刪除哪筆 ID
      */
     DataBehavior(dataBehaviorTrigger, delCouponId) {
       let api;
@@ -168,7 +167,7 @@ export default {
         this.GetCoupons();
       });
     },
-    // NOTE: Get Coupons Data
+    // NOTE: Func - Get API JSON Data[] Coupons
     GetCoupons(page = 1) {
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/coupons?page=${page}`;
       const vm = this;

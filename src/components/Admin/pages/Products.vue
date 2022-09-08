@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- NOTE: 讀取畫面 -->
+    <!-- NOTE: Component - "loading" -->
     <loading :active.sync="isLoading"></loading>
     <div class="text-right mt-5">
       <button class="btn btn-primary my-3" @click="openProductModal(true)">建立新的產品</button>
@@ -40,10 +40,10 @@
       </tbody>
     </table>
 
-    <!-- NOTE: 分頁 component -->
+    <!-- NOTE: Component - "pagination" -->
     <pagination :pagination='pagination' @trigger="getProducts"></pagination>
 
-    <!-- Modal -->
+    <!-- NOTE: Modal - Add & Edit Data -->
     <div class="modal fade" id="ProductModal" tabindex="-1" role="dialog"
       aria-labelledby="ProductModal" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
@@ -157,10 +157,15 @@ export default {
     };
   },
   methods: {
-    // NOTE: 開啟 ProductModal
+    // NOTE: Func - Open ProductModal
+    /**
+     * @param {boolean} isNew - "true" New_Data; "false" Old_Data
+     * @param {object} item - Products item
+     */
     openProductModal(isNew, item) {
-      this.$refs.files.value = ''; // 初始化上傳路徑
-      // 新舊資料判斷
+      // 初始化 image 上傳路徑
+      this.$refs.files.value = '';
+
       if (isNew) {
         this.Product = {};
         this.isNew = true;
@@ -170,7 +175,7 @@ export default {
       }
       $('#ProductModal').modal('show');
     },
-    // NOTE: 取得 Products
+    // NOTE: Func - Get API JSON Data[] Products
     getProducts(page = 1) {
       this.isLoading = true; // loading toggle
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/products?page=${page}`;
@@ -181,7 +186,7 @@ export default {
         this.pagination = response.data.pagination;
       });
     },
-    // NOTE: 新增編輯 Product
+    // NOTE: Func - Add & Edit Product
     addProduct() {
       let api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/product`;
       let httpMethod = 'post';
@@ -201,7 +206,7 @@ export default {
         }
       });
     },
-    // NOTE: 刪除 Product
+    // NOTE: Func - Delete 單一 Product
     removeProduct(id) {
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/product/${id}`;
       this.$http.delete(api).then((response) => {
@@ -209,7 +214,7 @@ export default {
         this.getProducts();
       });
     },
-    // NOTE: 上傳圖片
+    // NOTE: Func - 上傳圖片
     uploadFile() {
       console.log(this);
       this.status.fileuploading = true; // upload icon

@@ -22,6 +22,7 @@
 <script>
 export default {
   methods: {
+    // NOTE: func - router login.vue
     logout() {
       const api = `${process.env.APIPATH}/logout`;
       const vm = this;

@@ -69,6 +69,7 @@ export default {
     };
   },
   methods: {
+    // NOTE: Func - Get API JSON Data{} order
     GetOrder() {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/order/${vm.orderId}`;
@@ -77,6 +78,8 @@ export default {
         vm.order = response.data.order;
       });
     },
+    // NOTE: Func - Pay order
+    // TODO: 付款完成畫面
     payOrder() {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/pay/${vm.orderId}`;
@@ -90,8 +93,6 @@ export default {
     },
   },
   created() {
-    // console.log(this.$router);
-    // console.log(this.$route);
     this.orderId = this.$route.params.orderId;
     this.GetOrder();
   },

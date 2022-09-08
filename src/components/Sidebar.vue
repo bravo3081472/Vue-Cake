@@ -20,6 +20,7 @@
 </template>
 
 <style scoped>
+/* NOTE: css */
 /*
   * Sidebar
   */

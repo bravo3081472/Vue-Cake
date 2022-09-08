@@ -34,10 +34,11 @@
       </div>
     </div>
 
+    <!-- NOTE: Component - "pagination" -->
     <pagination class="d-flex mt-3 justify-content-center" :pagination="pagination"
     @trigger="GetProducts"></pagination>
 
-    <!-- Modal -->
+    <!-- NOTE: Modal - 商品詳細資料 -->
     <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productsModalLabel"
       aria-hidden>
       <div class="modal-dialog modal-xl" role="document">
@@ -104,6 +105,7 @@ export default {
     };
   },
   methods: {
+    // NOTE: Func - Get API JSON Data[] Products & 自定義分頁
     GetProducts(page = 1) {
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/products`;
       const vm = this;
@@ -146,6 +148,7 @@ export default {
         FilterPaginationData(vm.Products, page);
       });
     },
+    // NOTE: Func - Get API The ID JSON Data{} Product & Open productModal
     GetProduct(id) {
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/product/${id}`;
       const vm = this;
@@ -155,6 +158,7 @@ export default {
         $('#productModal').modal('show');
       });
     },
+    // NOTE: Func - Apply 優惠卷 Code
     AddCart(id, qty = 1) {
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/cart`;
       // const vm = this;
@@ -167,6 +171,7 @@ export default {
         $('#productModal').modal('hide');
       });
     },
+    // NOTE: HACK: Func - Count 購買數量
     ProductCountControl(countState) {
       const vm = this;
       switch (countState) {
@@ -186,7 +191,8 @@ export default {
   },
 };
 </script>
-
+// TODO: 將 style 拉出到 all.css
+// NOTE: scss - 獨立 style
 <style lang="scss" scoped>
 %input_count {
   border: 1px solid #000;

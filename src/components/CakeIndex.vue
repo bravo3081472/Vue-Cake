@@ -111,6 +111,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// NOTE: scss
 /* 燈箱 base class */
 /* .carousel {
   margin-bottom: 4rem;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- NOTE: 讀取畫面 -->
+    <!-- NOTE: Component - "loading" -->
     <loading :active.sync="isLoading"></loading>
 
     <table class="table">
@@ -46,6 +46,7 @@
         </button>
       </div>
     </div>
+
     <div class="my-5 row justify-content-center">
       <div class="col-md-6">
         <validation-observer v-slot="{ invalid }">
@@ -118,7 +119,7 @@ export default {
     };
   },
   methods: {
-    // NOTE: 取得訂單
+    // NOTE: Func - Get JSON API Data[] cart
     GetCart() {
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/cart`;
       const vm = this;
@@ -129,7 +130,7 @@ export default {
         vm.isLoading = false;
       });
     },
-    // NOTE: 加入優惠碼
+    // NOTE: Func - add 單一 優惠碼
     AddCouponCode() {
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/coupon`;
       const vm = this;
@@ -141,7 +142,7 @@ export default {
         this.GetCart();
       });
     },
-    // NOTE: 刪除訂單
+    // NOTE: Func - delete 單一 購物車品項
     DelCart(delId) {
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/cart/${delId}`;
       this.$http.delete(api).then((response) => {
@@ -149,6 +150,7 @@ export default {
         this.GetCart();
       });
     },
+    // NOTE: Func - create 訂單
     CreateOrder() {
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/order`;
       const vm = this;
