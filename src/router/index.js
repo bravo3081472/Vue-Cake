@@ -4,7 +4,7 @@ import Router from 'vue-router';
 // User
 import Login from '@/components/pages/Login';
 import Index from '@/components/CakeIndex';
-// import CustomerOrders from '@/components/pages/CustomerOrders';
+import CustomerOrders from '@/components/pages/CustomerOrders';
 import Cart from '@/components/pages/Cart';
 import CustomerCheckout from '@/components/pages/CustomerCheckout';
 
@@ -30,12 +30,12 @@ export default new Router({
       component: Index,
       meta: { requiresAuth: false },
       children: [
-        // {
-        //   path: 'customerOrders',
-        //   name: 'CustomerOrders',
-        //   component: CustomerOrders,
-        //   meta: { requiresAuth: false },
-        // },
+        {
+          path: 'customerOrders',
+          name: 'CustomerOrders',
+          component: CustomerOrders,
+          meta: { requiresAuth: false },
+        },
         {
           path: 'cart',
           name: 'Cart',
