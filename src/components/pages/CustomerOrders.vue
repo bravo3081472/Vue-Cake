@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-md-4 md-4" v-for="item in pagingProducts" :key=item.id>
+      <div class="col-md-4 mb-3" v-for="item in pagingProducts" :key=item.id>
         <div class="card card_item">
           <div class="card_item_image" :style="{backgroundImage: `url(${item.imageUrl})`}">
             <span class="badge badge-secondary card_item_sort">{{ item.category }}</span>
@@ -12,16 +12,16 @@
               <a href="#" class="text-dark">{{ item.title }}</a>
             </h5>
             <p class="card-text card_item_content">{{ item.content }}</p>
-            <div class="d-flex align-items-end">
-              <div class="input-group card_item_count">
-                <span class="btn" @click="ProductCountControl('reduce')"> - </span>
-                <input class="form-control" type="text" v-model.number="productCount">
-                <span class="btn" @click="ProductCountControl('add')"> + </span>
-              </div>
-              <div class="card_item_price">
-                <div class="h5">現在只要 {{ item.price }} 元</div>
-                <del class="h6">原價 {{ item.origin_price }} 元</del>
-              </div>
+          </div>
+          <div class="d-flex align-items-end p-3">
+            <div class="input-group card_item_count">
+              <span class="btn" @click="ProductCountControl('reduce')"> - </span>
+              <input class="form-control" type="text" v-model.number="productCount">
+              <span class="btn" @click="ProductCountControl('add')"> + </span>
+            </div>
+            <div class="card_item_price">
+              <div class="h5">現在只要 {{ item.price }} 元</div>
+              <del class="h6">原價 {{ item.origin_price }} 元</del>
             </div>
           </div>
           <div class="card-footer p-0">
@@ -36,7 +36,7 @@
 
     <!-- NOTE: Component - "pagination" -->
     <pagination class="d-flex mt-3 justify-content-center" :pagination="pagination"
-    @trigger="GetProducts"></pagination>
+      @trigger="GetProducts"></pagination>
 
     <!-- NOTE: Modal - 商品詳細資料 -->
     <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productsModalLabel"
@@ -210,6 +210,7 @@ export default {
 -------------------------------------------------- */
 .card_item {
   border: 1px solid #ccc;
+  height: 100%;
   .card_item_image {
     height: 300px;
     background-size: cover;
@@ -238,6 +239,7 @@ export default {
     -webkit-box-orient: vertical;
   }
   .card_item_count {
+    width: 15rem;
     @extend %input_count;
   }
   .card_item_price {
