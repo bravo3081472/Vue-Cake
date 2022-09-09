@@ -78,7 +78,7 @@
       <div id="products_list" class="container mt-5">
         <div class="row">
           <div class="col-md-12">
-            <router-view></router-view>
+            <CustomerOrders></CustomerOrders>
           </div>
         </div>
       </div>
@@ -99,13 +99,15 @@
 
 <script>
 import Navbar from './Navbar';
+import CustomerOrders from './pages/CustomerOrders';
 
 export default {
   components: {
     Navbar,
+    CustomerOrders,
   },
   created() {
-    this.$router.push('/customerOrders');
+    // this.$router.push('/customerOrders');
   },
 };
 </script>
