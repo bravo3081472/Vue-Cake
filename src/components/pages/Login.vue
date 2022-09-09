@@ -16,9 +16,7 @@
             </label>
           </div>
           <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-          <button class="btn btn-md btn-light btn-block">
-            <router-link class="text-decoration-none" to="/CustomerOrders">回到首頁</router-link>
-          </button>
+          <p class="mt-5 mb-3 text-muted">&copy; 2017-2021</p>
         </form>
       </div>
     </div>
@@ -26,7 +24,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -37,6 +34,7 @@ export default {
     };
   },
   methods: {
+    // TODO: 需要加入返回首頁功能
     // NOTE: Func - Login API Admin Data
     signin() {
       const vm = this;

@@ -134,6 +134,7 @@
 </template>
 
 <script>
+// TODO: 千分位
 import $ from 'jquery';
 
 import pagination from '@/components/pagination';
