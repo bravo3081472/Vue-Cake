@@ -233,7 +233,7 @@ export default {
           this.status.fileuploading = false; // upload icon toggle
           this.$set(this.Product, 'imageUrl', response.data.imageUrl); // imageUrl v-model
         } else {
-          // * Error Message
+          // NOTE: send - info AlertMessage.vue Error Message
           this.$bus.$emit('message:push', response.data.message, 'danger');
         }
       });
