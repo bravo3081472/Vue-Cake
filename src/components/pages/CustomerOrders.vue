@@ -110,7 +110,7 @@ export default {
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/products`;
       const vm = this;
       this.$http.get(api).then((response) => {
-        console.log(response.data);
+        console.log('GetProducts', response.data);
         vm.Products = response.data.products;
 
         // 自定義分頁
@@ -119,9 +119,7 @@ export default {
           const dataTotal = Data.length;
           const perPage = 6;
           const pageTotal = Math.ceil(dataTotal / perPage);
-          console.log(dataTotal, perPage, pageTotal);
           let currentPage = nowPage;
-          console.log(currentPage);
           // 避免當前分頁超出範圍
           if (currentPage > pageTotal) {
             currentPage = pageTotal;
@@ -167,8 +165,10 @@ export default {
         qty,
       };
       this.$http.post(api, { data: cart }).then((response) => {
-        console.log(response.data);
+        console.log('AddCart', response.data);
         $('#productModal').modal('hide');
+        // NOTE: send - Event CartModal.vue GetCard()
+        this.$bus.$emit('GetCart');
       });
     },
     // NOTE: HACK: Func - Count 購買數量
@@ -194,6 +194,10 @@ export default {
 // TODO: 將 style 拉出到 all.css
 // NOTE: scss - 獨立 style
 <style lang="scss" scoped>
+html {
+  overflow-y: overlay;
+}
+
 %input_count {
   border: 1px solid #000;
   border-radius: 50px;

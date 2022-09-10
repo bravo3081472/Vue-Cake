@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- NOTE: component - "Navbar" -->
     <Navbar></Navbar>
     <main role="main">
       <!-- 燈箱 -->
@@ -93,19 +94,25 @@
           <a href="#" class="btn btn-outline-primary footer_link">Back to top</a>
         </div>
       </footer>
+
+      <button class="btn btn-outline-primary card_button"
+      data-toggle="modal" data-target="#CartModal">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </button>
+      <!-- NOTE: component - "CartModal" -->
+      <CartModal></CartModal>
     </main>
   </div>
 </template>
 
 <script>
 import Navbar from './Navbar';
+import CartModal from './CartModal';
 
 export default {
   components: {
     Navbar,
-  },
-  created() {
-    this.$router.push('/customerOrders');
+    CartModal,
   },
 };
 </script>
@@ -146,6 +153,16 @@ export default {
   .footer_link {
     margin-left: auto;
   }
+}
+.card_button {
+  position: fixed;
+  right: 2rem;
+  bottom: 1rem;
+  width: 5rem;
+  height: 5rem;
+  margin-right: calc(100% - 100vw);
+  font-size: 2rem;
+  border-radius: 50%;
 }
 
 /* RESPONSIVE CSS
