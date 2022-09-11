@@ -76,7 +76,7 @@
       </div>
 
       <!-- BODY -->
-      <div id="products_list" class="container mt-5">
+      <div id="products_list" class="container">
         <div class="row">
           <div class="col-md-12">
             <router-view></router-view>
@@ -120,9 +120,10 @@ export default {
 <style lang="scss" scoped>
 // NOTE: scss
 /* 燈箱 base class */
-/* .carousel {
+.carousel {
+  margin-top: 5rem;
   margin-bottom: 4rem;
-} */
+}
 .carousel-caption {
   bottom: 3rem;
   z-index: 10;

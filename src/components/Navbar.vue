@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <nav class="navbar navbar-expand">
+      <nav class="navbar navbar-expand bg-white fixed-top">
         <div class="container-fluid w-50 m-auto">
           <a class="navbar-brand logo" href="#">Cake Test</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse"

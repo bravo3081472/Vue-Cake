@@ -13,7 +13,6 @@
           <div class="modal-body pt-0">
             <!-- NOTE: Component - "loading" -->
             <loading :active.sync="isLoading"></loading>
-            <!-- TODO: 優化 排版 Cart -->
             <table class="table">
               <thead>
                 <th></th>
