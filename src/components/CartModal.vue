@@ -67,7 +67,7 @@
               </div>
             </div>
             <div class="row">
-              <button class="btn btn-outline-primary w-50 mx-auto" type="button">
+              <button class="btn btn-outline-primary w-50 mx-auto" type="button" @click="ToCart">
                 確認
               </button>
             </div>
@@ -81,6 +81,8 @@
 </template>
 
 <script>
+import $ from 'jquery';
+
 export default {
   data() {
     return {
@@ -121,6 +123,10 @@ export default {
         console.log('DelCart', response.data);
         this.GetCart();
       });
+    },
+    ToCart() {
+      $('#CartModal').modal('hide');
+      this.$router.push('/cake-test/Cart');
     },
   },
   created() {

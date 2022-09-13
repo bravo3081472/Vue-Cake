@@ -40,19 +40,19 @@ export default new Router({
           component: CustomerOrders,
           meta: { requiresAuth: false },
         },
-        {
-          path: 'cart',
-          name: 'Cart',
-          component: Cart,
-          meta: { requiresAuth: false },
-        },
-        {
-          path: 'customerCheckout/:orderId',
-          name: 'CustomerCheckout',
-          component: CustomerCheckout,
-          meta: { requiresAuth: false },
-        },
       ],
+    },
+    {
+      path: '/cake-test/customerCheckout/:orderId',
+      name: 'CustomerCheckout',
+      component: CustomerCheckout,
+      meta: { requiresAuth: false },
+    },
+    {
+      path: '/cake-test/cart',
+      name: 'Cart',
+      component: Cart,
+      meta: { requiresAuth: false },
     },
     {
       path: '/login',

@@ -2,6 +2,8 @@
   <div>
     <div class="my-5 row justify-content-center">
       <form class="col-sm-6">
+        <h2 class="text-center mb-4">訂單建立成功</h2>
+        <p class="h3 text-center">商品明細</p>
         <table class="table">
           <thead>
             <th>品名</th>
@@ -22,7 +24,7 @@
             </tr>
           </tfoot>
         </table>
-
+        <p class="h3 text-center">收件人明細</p>
         <table class="table">
           <tbody>
             <tr>
@@ -52,6 +54,11 @@
         </table>
         <div class="text-right" v-if="order.is_paid === false">
           <button class="btn btn-danger" @click="payOrder">確認付款去</button>
+        </div>
+        <div class="text-right">
+          <router-link class="btn btn-primary" :to="{ name: 'CustomerOrders' }">
+            返回購物
+          </router-link>
         </div>
       </form>
     </div>
@@ -88,6 +95,7 @@ export default {
         if (response.data.success) {
           vm.GetOrder();
           console.log('付款完成');
+          vm.$router.push('/cake-test/customerOrders');
         }
       });
     },

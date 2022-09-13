@@ -2,6 +2,7 @@
   <div>
     <div class="my-5 row justify-content-center">
       <div class="col-md-6">
+        <h2 class="text-center">收件人資料</h2>
         <validation-observer v-slot="{ invalid }">
           <form @submit.prevent="CreateOrder">
             <validation-provider rules="required|email" v-slot="{ errors, classes }">
@@ -42,8 +43,13 @@
               <textarea name="" id="comment" class="form-control" cols="30" rows="10"
                 v-model="form.user.message"></textarea>
             </div>
+            <div class="text-right mb-3">
+              <button class="btn btn-danger" :disabled="invalid" @click="CreateOrder">送出訂單</button>
+            </div>
             <div class="text-right">
-              <button class="btn btn-danger" :disabled="invalid">送出訂單</button>
+              <router-link class="btn btn-primary" :to="{ name: 'CustomerOrders' }">
+                返回購物
+              </router-link>
             </div>
           </form>
         </validation-observer>
@@ -78,7 +84,7 @@ export default {
       this.$http.post(api, { data: order }).then((response) => {
         console.log(response.data);
         vm.isLoading = false;
-        vm.$router.push(`customerCheckout/${response.data.orderId}`);
+        vm.$router.push({ name: 'CustomerCheckout', params: { orderId: `${response.data.orderId}` } });
       });
     },
   },
