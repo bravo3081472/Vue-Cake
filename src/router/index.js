@@ -7,6 +7,7 @@ import Index from '@/components/CakeIndex';
 import CustomerOrders from '@/components/pages/CustomerOrders';
 import Cart from '@/components/pages/Cart';
 import CustomerCheckout from '@/components/pages/CustomerCheckout';
+import About from '@/components/pages/About';
 
 // 未使用
 // import Featurettes from '@/component/pages/Featurettes'; // 首頁廣告頁面
@@ -22,14 +23,17 @@ export default new Router({
   routes: [
     {
       path: '*',
-      redirect: '/customerOrders',
+      redirect: '/cake-test',
     },
     {
-      path: '/',
-      name: 'Index',
+      path: '/cake-test',
       component: Index,
       meta: { requiresAuth: false },
       children: [
+        {
+          path: '',
+          component: About,
+        },
         {
           path: 'customerOrders',
           name: 'CustomerOrders',

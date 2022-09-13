@@ -12,10 +12,12 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="#">首頁 <span class="sr-only">(current)</span></a>
+                <router-link class="nav-link" to="/cake-test">首頁
+                  <span class="sr-only">(current)</span>
+                </router-link>
               </li>
               <li class="nav-item">
-                <router-link class="nav-link active" to="/CustomerOrders">商品一覽
+                <router-link class="nav-link active" :to="{ name: 'CustomerOrders' }">商品一覽
                   <span class="sr-only">(current)</span>
                 </router-link>
               </li>

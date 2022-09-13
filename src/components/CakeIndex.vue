@@ -125,6 +125,9 @@ export default {
   margin-bottom: 4rem;
 }
 .carousel-caption {
+  padding: 2rem;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, .3);
   bottom: 3rem;
   z-index: 10;
 }
