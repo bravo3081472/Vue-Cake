@@ -2,6 +2,7 @@
   <div>
     <!-- NOTE: component - "Navbar" -->
     <Navbar></Navbar>
+    <Alert></Alert>
     <main role="main">
       <!-- 燈箱 -->
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -106,6 +107,7 @@
 </template>
 
 <script>
+import Alert from '@/components/AlertMessage';
 import Navbar from './Navbar';
 import CartModal from './CartModal';
 
@@ -113,6 +115,7 @@ export default {
   components: {
     Navbar,
     CartModal,
+    Alert,
   },
 };
 </script>

@@ -1,9 +1,10 @@
 <template>
   <div class="container h-100vh">
+    <Alert></Alert>
     <div class="row align-items-center h-100">
       <div class="col">
         <form class="form-signin" @submit.prevent="signin">
-          <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+          <h1 class="h3 mb-3 font-weight-normal text-center">Please sign in</h1>
           <label for="inputEmail" class="sr-only">Email address</label>
           <input type="email" id="inputEmail" class="form-control" placeholder="Email address"
             required autofocus v-model="user.username">
@@ -15,8 +16,8 @@
               <input type="checkbox" value="remember-me"> Remember me
             </label>
           </div>
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-          <p class="mt-5 mb-3 text-muted">&copy; 2017-2021</p>
+          <button class="btn btn-lg btn-primary btn-block mb-3" type="submit">Sign in</button>
+          <router-link class="btn btn-lg btn-light btn-block" to="/cake-test">返回首頁</router-link>
         </form>
       </div>
     </div>
@@ -24,7 +25,12 @@
 </template>
 
 <script>
+import Alert from '@/components/AlertMessage';
+
 export default {
+  components: {
+    Alert,
+  },
   data() {
     return {
       user: {
@@ -48,9 +54,7 @@ export default {
           document.cookie = `hexToken=${token}; expired=${new Date(expired)}`;
           vm.$router.push('/admin/Products');
         } else {
-          // TODO: 製作登入失敗 modal
-          // eslint-disable-next-line no-alert
-          alert('登入失敗');
+          vm.$bus.$emit('message:push', response.data.message, 'danger');
         }
       });
     },

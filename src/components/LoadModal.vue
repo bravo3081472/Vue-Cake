@@ -61,9 +61,7 @@ export default {
           $('#LoadModel').modal('hide');
           vm.$router.push('/admin/Products');
         } else {
-          // TODO: 製作登入失敗 modal
-          // eslint-disable-next-line no-alert
-          alert('登入失敗');
+          vm.$bus.$emit('message:push', response.data.message, 'danger');
         }
       });
     },
