@@ -14,6 +14,7 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 
 import './bus';
 import currencyFilter from './filters/currency';
+import dateConversion from './filters/dateConversion';
 
 import { ValidationObserver, ValidationProvider, extend, localize, configure } from 'vee-validate';
 import TW from 'vee-validate/dist/locale/zh_TW.json';
@@ -37,6 +38,7 @@ configure({
 
 // 單位符號
 Vue.filter('currency', currencyFilter);
+Vue.filter('dateConversion', dateConversion);
 
 // 讀取畫面
 Vue.component('Loading', Vueloading);

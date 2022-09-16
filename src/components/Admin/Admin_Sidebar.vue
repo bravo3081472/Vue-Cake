@@ -4,25 +4,47 @@
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <h5 class="nav-link" href="#">
               <span data-feather="home"></span>
               管理項目 <span class="sr-only">(current)</span>
-            </a>
+            </h5>
           </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/admin/products">
+          <li class="nav-item" @click="sidebarState = 'products'">
+            <router-link class="nav-link" :class="{ 'active': sidebarState === 'products' }"
+              to="/admin/products">
               <i class="fa-solid fa-box-open"></i>
               商品一覽
             </router-link>
           </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/admin/coupon">優惠碼一覽</router-link>
+          <li class="nav-item" @click="sidebarState = 'coupon'">
+            <router-link class="nav-link" :class="{ 'active': sidebarState === 'coupon' }"
+              to="/admin/coupon">
+              <i class="fa-solid fa-barcode"></i>
+              優惠碼一覽
+            </router-link>
+          </li>
+          <li class="nav-item" @click="sidebarState = 'orders'">
+            <router-link class="nav-link" :class="{ 'active': sidebarState === 'orders' }"
+              to="/admin/orders">
+              <i class="fa-regular fa-file-lines"></i>
+              訂單一覽
+            </router-link>
           </li>
         </ul>
       </div>
     </nav>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      sidebarState: '',
+    };
+  },
+};
+</script>
 
 <style scoped>
 /* NOTE: css */
@@ -72,14 +94,20 @@
   color: #999;
 }
 
+.sidebar .nav-link i {
+  width: 1rem;
+  height: 1rem;
+  padding-right: 1.5rem;
+}
+
 .sidebar .nav-link.active {
   color: #007bff;
 }
 
-.sidebar .nav-link:hover .feather,
+/* .sidebar .nav-link:hover .feather,
 .sidebar .nav-link.active .feather {
   color: inherit;
-}
+} */
 
 .sidebar-heading {
   font-size: 0.75rem;

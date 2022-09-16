@@ -16,6 +16,7 @@ import About from '@/components/pages/About';
 import AdminDashboard from '@/components/Admin/Admin_Dashboard';
 import Products from '@/components/Admin/pages/Products';
 import Coupon from '@/components/Admin/pages/Coupon';
+import Orders from '@/components/Admin/pages/Orders';
 
 Vue.use(Router);
 
@@ -77,6 +78,12 @@ export default new Router({
           name: 'Coupon',
           component: Coupon,
           meta: { requiresAuth: false },
+        },
+        {
+          path: 'orders',
+          name: 'Orders',
+          component: Orders,
+          mete: { requiresAuth: false },
         },
       ],
     },
