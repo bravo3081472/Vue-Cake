@@ -86,7 +86,6 @@ export default {
       });
     },
     // NOTE: Func - Pay order
-    // TODO: 付款完成畫面
     payOrder() {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/pay/${vm.orderId}`;
@@ -94,7 +93,6 @@ export default {
         console.log(response.data);
         if (response.data.success) {
           vm.GetOrder();
-          console.log('付款完成');
           vm.$router.push('/cake-test/customerOrders');
         }
       });

@@ -40,7 +40,6 @@ export default {
     };
   },
   methods: {
-    // TODO: 需要加入返回首頁功能
     // NOTE: Func - Login API Admin Data
     signin() {
       const vm = this;
