@@ -4,7 +4,7 @@
     <div class="text-right mt-5">
       <button class="btn btn-primary my-3" @click="OpenCouponModal(true)">新增優惠碼</button>
     </div>
-    <table class="table">
+    <table class="table toggle-show">
       <thead>
         <th>標題</th>
         <th>優惠百分比</th>
@@ -30,6 +30,45 @@
         </tr>
       </tbody>
     </table>
+
+    <div class="accordion toggle-hide" id="accordionExample">
+      <div class="card">
+        <div class="card-header">
+          <div class="row text-center">
+            <div class="col">標題</div>
+            <div class="col">優惠百分比</div>
+            <div class="col">到期日</div>
+          </div>
+        </div>
+        <div class="list-group list-group-flush">
+          <div class="list-group-item"
+            v-for="(item) in Coupons" :key=item.id>
+
+            <!-- toggle collapsed -->
+            <div class="row collapsed align-items-center text-center" data-toggle="collapse"
+              :data-target="`#${item.id}`" aria-expanded="false" aria-controls="collapseTwo">
+              <div class="col">
+                <button class="btn btn-link d-inline p-0" type="button">
+                  <i class="fa-solid fa-angle-down"></i>
+                </button>
+                {{ item.title }}
+              </div>
+              <div class="col">{{ item.percent }}</div>
+              <div class="col">{{ item.due_date | dateConversion }}</div>
+
+              <!-- collapsed content -->
+              <div :id="`${item.id}`" class="container bg-light collapse"
+                aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="col">
+                  優惠碼：{{ item.code }}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- NOTE: Component - "Pagination" -->
     <pagination :pagination='pagination' @trigger="GetCoupons"></pagination>

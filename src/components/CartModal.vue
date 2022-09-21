@@ -5,7 +5,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header bg-primary">
-            <h5 class="modal-title modal_header_title">購物車</h5>
+            <h5 class="modal-title modal-cart__header__title">購物車</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -135,15 +135,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.modal_header_title {
-  width: 100px;
-  margin: auto;
-  color: #fff;
-  & + button {
-    position: absolute;
-    right: 1rem;
-  }
-}
-</style>

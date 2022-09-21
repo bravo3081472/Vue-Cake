@@ -1,0 +1,9 @@
+.modal-cart__header__title {
+  width: 100px;
+  margin: auto;
+  color: #fff;
+  & + button {
+    position: absolute;
+    right: 1rem;
+  }
+}

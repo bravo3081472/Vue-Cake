@@ -1,0 +1,61 @@
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+@media (min-width: 40em) {
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
+}
+
+/* Sidebar SCSS
+-------------------------------------------------- */
+@media (max-width: 767.98px) {
+  .sidebar {
+    top: 5rem;
+  }
+}
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  .sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+  }
+}
+
+/* RWD toggle CSS
+-------------------------------------------------- */
+@media (min-width: 768px) {
+  .toggle-hide {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .toggle-show {
+    display: none;
+  }
+}
+
+/* Modal Product CSS
+-------------------------------------------------- */
+@media (max-width: 767px) {
+  .modal-products__container {
+    height: 250px;
+  }
+  .modal-products__title {
+    button {
+      display: none;
+    }
+  }
+  .modal-products__content {
+    font-size: 1rem;
+    margin: 0;
+  }
+}

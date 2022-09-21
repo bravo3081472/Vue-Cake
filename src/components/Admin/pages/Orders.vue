@@ -2,10 +2,11 @@
   <div>
     <loading :active.sync="isLoading"></loading>
 
-    <table class="table table-responsive-sm mt-5 orders_toggler_show">
+    <!-- width > 768px -->
+    <table class="table table-responsive-sm mt-5 toggle-show">
       <thead class="thead-dark">
         <tr>
-          <th class="orders_toggler_hide"></th>
+          <th class="toggle-show"></th>
           <th>建立時間</th>
           <th>訂單ID</th>
           <th>是否付款</th>
@@ -44,7 +45,8 @@
       </tbody>
     </table>
 
-    <div class="accordion orders_toggler_hide" id="accordionExample">
+    <!-- width < 767px -->
+    <div class="accordion toggle-hide" id="accordionExample">
       <div class="card mt-5">
         <div class="card-header">
           <div class="row">
@@ -56,6 +58,8 @@
           <div class="list-group-item"
             :class="[item.is_paid ? 'list-group-item-success' : 'list-group-item-danger']"
             v-for="(item) in Orders" :key="item.id">
+
+            <!-- collapsed toggle -->
             <div class="row collapsed align-items-center" data-toggle="collapse"
               :data-target="`#${item.id}`" aria-expanded="false" aria-controls="collapseTwo">
               <div class="col-4 p-0">
@@ -66,6 +70,7 @@
               </div>
               <div class="col">{{ item.id }}</div>
 
+              <!-- collapsed content -->
               <div :id="`${item.id}`" class="container bg-light collapse"
                 aria-labelledby="headingTwo" data-parent="#accordionExample">
                 <div class="row">
@@ -90,6 +95,7 @@
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -120,15 +126,3 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@media (min-width: 768px) {
-  .orders_toggler_hide {
-    display: none;
-  }
-}
-@media (max-width: 767px) {
-  .orders_toggler_show {
-    display: none;
-  }
-}
-</style>

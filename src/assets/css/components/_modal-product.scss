@@ -1,0 +1,46 @@
+/* Product Modal
+-------------------------------------------------- */
+.modal-products {
+  &__image {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    & > img {
+      align-content: center;
+      justify-content: center;
+      object-fit: cover;
+    }
+  }
+  &__container {
+    display: flex;
+    height: 500px;
+    flex-direction: column;
+  }
+  &__title {
+    & > h2 {
+      display: inline;
+    }
+  }
+  &__content {
+    font-size: 1.5rem;
+    margin: 2rem 0;
+    &__footer {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      margin-top: auto;
+      &__count {
+        @extend %input__count;
+        width: 50% !important;
+        justify-content: flex-start;
+      }
+    }
+  }
+}
+.close-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 1030;
+}

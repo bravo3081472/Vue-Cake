@@ -5,7 +5,9 @@
     <div class="text-right mt-5">
       <button class="btn btn-primary my-3" @click="openProductModal(true)">建立新的產品</button>
     </div>
-    <table class="table table-responsive-sm mt-2">
+
+    <!-- width < 767px -->
+    <table class="table table-responsive-sm mt-2 toggle-show">
       <thead>
         <tr>
           <th width="100em">分類</th>
@@ -39,6 +41,74 @@
         </tr>
       </tbody>
     </table>
+
+    <!-- width < 767px -->
+    <div class="accordion toggle-hide" id="accordionExample">
+      <div class="card">
+        <div class="card-header">
+          <div class="row text-center">
+            <div class="col-2 p-0">分類</div>
+            <div class="col">產品名稱</div>
+            <div class="col-3 p-0">編輯</div>
+            <div class="col-2 p-0">啟用</div>
+          </div>
+        </div>
+        <div class="list-group list-group-flush">
+          <div class="list-group-item"
+            :class="[item.is_enabled ? 'list-group-item-success' : 'list-group-item-danger']"
+            v-for="(item) in Products" :key="item.id">
+
+            <!-- toggle collapsed -->
+            <div class="row collapsed align-items-center text-center" data-toggle="collapse"
+              :data-target="`#${item.id}`" aria-expanded="false" aria-controls="collapseTwo">
+              <div class="col-2 p-0">
+                <button class="btn btn-link d-inline p-0" type="button">
+                  <i class="fa-solid fa-angle-down"></i>
+                </button>
+                {{ item.category }}
+              </div>
+              <div class="col">{{ item.title }}</div>
+              <div class="col-3 p-0">
+                <button class="btn btn-outline-primary btn-sm"
+                  @click="openProductModal(false, item)">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button class="btn btn-outline-primary btn-sm" @click="removeProduct(item.id)">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+              <div class="col-2 p-0">
+                <span @click="toggleEnabled(false, item)">
+                  <input type="checkbox" :checked="item.is_enabled">
+                </span>
+              </div>
+
+              <!-- collapsed content -->
+              <div :id="`${item.id}`" class="container bg-light collapse"
+                aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="row">
+                  <div class="col">
+                    原價：{{ item.origin_price }}
+                  </div>
+                  <div class="col">
+                    售價：{{ item.price }}
+                  </div>
+                </div>
+                <!-- <div class="row">
+                  <ul class="col list-unstyled">
+                    訂單明細：
+                    <li v-for="(products, i) in item.products" :key="i">
+                      {{ products.product.title }} / {{ products.product.num }}
+                    </li>
+                    <li>訂單總額：{{ item.total | currency }}</li>
+                  </ul>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- NOTE: Component - "pagination" -->
     <pagination :pagination='pagination' @trigger="getProducts"></pagination>
@@ -164,7 +234,6 @@ export default {
     openProductModal(isNew, item) {
       // 初始化 image 上傳路徑
       this.$refs.files.value = '';
-
       if (isNew) {
         this.Product = {};
         this.isNew = true;
@@ -173,6 +242,21 @@ export default {
         this.isNew = false;
       }
       $('#ProductModal').modal('show');
+    },
+    // NOTE: Func - toggleEnabled
+    toggleEnabled(isNew, item) {
+      if (!isNew) {
+        this.Product = Object.assign({}, item);
+        this.Product.is_enabled = !item.is_enabled;
+        // 配合資料格式轉換
+        if (this.Product.is_enabled) {
+          this.Product.is_enabled = 1;
+        } else {
+          this.Product.is_enabled = 0;
+        }
+        console.log(this.Product.is_enabled);
+        this.addProduct();
+      }
     },
     // NOTE: Func - Get API JSON Data[] Products
     getProducts(page = 1) {

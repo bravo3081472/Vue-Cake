@@ -1,0 +1,28 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/bootstrap";
+
+// Base
+@import "./base/base";
+
+// Utils
+@import "./utils/input-count";
+
+// Pages
+
+// Components
+@import "./components/login";
+@import "./components/sidebar";
+@import "./components/footer";
+@import "./components/button-cart";
+@import "./components/alert-message";
+@import "./components/card-item";
+// Modal
+  @import "./components/modal-cart";
+  @import "./components/modal-product";
+
+  // Layout
+  @import "./layout/rwd";
+
+// Vendors-extensions
+@import "./vendors-extensions/carousel";
+

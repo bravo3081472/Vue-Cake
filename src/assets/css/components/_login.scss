@@ -1,0 +1,30 @@
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 100px 10px;
+  margin: auto;
+  text-align: center;
+  &__checkbox {
+    margin: 0.5rem;
+    font-weight: 400;
+  }
+  &__control {
+    height: auto;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    &:focus {
+      z-index: 2;
+    }
+  }
+  &__button {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 50px;
+  }
+}

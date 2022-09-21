@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav aria-label="Page navigation example">
-      <ul class="pagination">
+      <ul class="pagination justify-content-center mt-1">
         <li class="page-item" :class="{'disabled': !pagination.has_pre}">
           <a class="page-link" href="#" aria-label="Previous"
             @click="upDataProduct(pagination.current_page - 1)">

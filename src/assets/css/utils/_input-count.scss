@@ -1,0 +1,12 @@
+// input 加減數量
+%input__count {
+  border: 1px solid #000;
+  border-radius: 50px;
+  & > span {
+    border: none;
+  }
+  & input[type='text'] {
+    border: none;
+    text-align: center;
+  }
+}
