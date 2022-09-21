@@ -20,10 +20,9 @@
 
             <div class="container">
               <div class="carousel-caption text-left">
-                <h1>Example headline.</h1>
+                <h1>展示 輪播1</h1>
                 <p>
-                  Some representative placeholder content for the first slide of
-                  the carousel.
+                  展示 輪播1 文字
                 </p>
                 <p>
                   <a class="btn btn-lg btn-primary" href="#">Sign up today</a>
@@ -36,10 +35,9 @@
 
             <div class="container">
               <div class="carousel-caption">
-                <h1>Another example headline.</h1>
+                <h1>展示 輪播2</h1>
                 <p>
-                  Some representative placeholder content for the second slide
-                  of the carousel.
+                  展示 輪播2 文字
                 </p>
                 <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
               </div>
@@ -50,10 +48,9 @@
 
             <div class="container">
               <div class="carousel-caption text-right">
-                <h1>One more for good measure.</h1>
+                <h1>展示 輪播3</h1>
                 <p>
-                  Some representative placeholder content for the third slide of
-                  this carousel.
+                  展示 輪播3 文字
                 </p>
                 <p>
                   <a class="btn btn-lg btn-primary" href="#">Browse gallery</a>
