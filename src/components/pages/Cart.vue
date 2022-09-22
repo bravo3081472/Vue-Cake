@@ -82,7 +82,7 @@ export default {
       const order = vm.form;
       this.isLoading = true;
       this.$http.post(api, { data: order }).then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         vm.isLoading = false;
         vm.$router.push({ name: 'CustomerCheckout', params: { orderId: `${response.data.orderId}` } });
       });

@@ -254,7 +254,7 @@ export default {
         } else {
           this.Product.is_enabled = 0;
         }
-        console.log(this.Product.is_enabled);
+        // console.log(this.Product.is_enabled);
         this.addProduct();
       }
     },
@@ -263,7 +263,7 @@ export default {
       this.isLoading = true; // loading toggle
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/products?page=${page}`;
       this.$http.get(api).then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         this.isLoading = false;
         this.Products = response.data.products;
         this.pagination = response.data.pagination;
@@ -278,28 +278,27 @@ export default {
         httpMethod = 'put';
       }
       this.$http[httpMethod](api, { data: this.Product }).then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.success) {
           $('#ProductModal').modal('hide');
           this.getProducts();
         } else {
           $('#ProductModal').modal('hide');
           this.getProducts();
-          console.log('新增失敗');
+          // console.log('新增失敗');
         }
       });
     },
     // NOTE: Func - Delete 單一 Product
     removeProduct(id) {
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/admin/product/${id}`;
-      this.$http.delete(api).then((response) => {
-        console.log(response.data);
+      this.$http.delete(api).then(() => {
+        // console.log(response.data);
         this.getProducts();
       });
     },
     // NOTE: Func - 上傳圖片
     uploadFile() {
-      console.log(this);
       this.status.fileuploading = true; // upload icon
       const uploadFile = this.$refs.files.files[0];
       // formData
@@ -311,7 +310,7 @@ export default {
           'Content-Type': 'multipart/form-data',
         },
       }).then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.data.success) {
           this.status.fileuploading = false; // upload icon toggle
           this.$set(this.Product, 'imageUrl', response.data.imageUrl); // imageUrl v-model

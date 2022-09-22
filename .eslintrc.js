@@ -48,6 +48,6 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     // 忽略 console 字符，log 字尾
     // 'no-console': ["跳出錯誤", { 允許: ["特定字尾"] }],
-    'no-console': ["error", { allow: ["log"] }],
+    // 'no-console': ["error", { allow: ["log"] }],
     }
 }

@@ -116,7 +116,7 @@ export default {
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/products`;
       const vm = this;
       this.$http.get(api).then((response) => {
-        console.log('GetProducts', response.data);
+        // console.log('GetProducts', response.data);
         vm.Products = response.data.products.filter(item => item.is_enabled === 1);
         /**
          * 自定義分頁
@@ -173,8 +173,8 @@ export default {
         product_id: id,
         qty,
       };
-      this.$http.post(api, { data: cart }).then((response) => {
-        console.log('AddCart', response.data);
+      this.$http.post(api, { data: cart }).then(() => {
+        // console.log('AddCart', response.data);
         $('#productModal').modal('hide');
         // NOTE: send - Event CartModal.vue GetCard()
         this.$bus.$emit('GetCart');

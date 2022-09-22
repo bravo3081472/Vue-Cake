@@ -99,7 +99,7 @@ export default {
       const vm = this;
       vm.isLoading = true;
       this.$http.get(api).then((response) => {
-        console.log('GetCart', response.data);
+        // console.log('GetCart', response.data);
         vm.cart = response.data.data;
         vm.isLoading = false;
       });
@@ -111,16 +111,16 @@ export default {
       const coupon = {
         code: vm.couponCode,
       };
-      this.$http.post(api, { data: coupon }).then((response) => {
-        console.log('AddCouponCode', response.data);
+      this.$http.post(api, { data: coupon }).then(() => {
+        // console.log('AddCouponCode', response.data);
         this.GetCart();
       });
     },
     // NOTE: Func - delete 單一 購物車品項
     DelCart(delId) {
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/cart/${delId}`;
-      this.$http.delete(api).then((response) => {
-        console.log('DelCart', response.data);
+      this.$http.delete(api).then(() => {
+        // console.log('DelCart', response.data);
         this.GetCart();
       });
     },

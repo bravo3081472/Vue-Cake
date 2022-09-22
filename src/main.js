@@ -36,13 +36,14 @@ configure({
   },
 });
 
-// 單位符號
+// 資料處理、轉換
 Vue.filter('currency', currencyFilter);
 Vue.filter('dateConversion', dateConversion);
 
 // 讀取畫面
 Vue.component('Loading', Vueloading);
 
+// 阻止啟動生產消息
 Vue.config.productionTip = false;
 
 axios.defaults.withCredentials = true;
@@ -52,7 +53,7 @@ Vue.use(Vueaxion, axios);
 
 // 路由阻擋
 router.beforeEach((to, from, next) => {
-  console.log('to', to, 'from', from, 'next', next);
+  // console.log('to', to, 'from', from, 'next', next);
   if (to.meta.requiresAuth) {
     const api = `${process.env.APIPATH}/api/user/check`;
     axios.post(api).then((response) => {

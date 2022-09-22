@@ -114,7 +114,7 @@ export default {
       vm.isLoading = true;
       this.$http.get(api).then((response) => {
         // console.log(response.data.orders[0].products["-NBqPPHImzGmQn3EfHdD"]);
-        console.log(response.data);
+        // console.log(response.data);
         vm.Orders = response.data.orders;
         vm.isLoading = false;
       });

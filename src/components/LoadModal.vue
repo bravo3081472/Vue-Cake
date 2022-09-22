@@ -55,7 +55,7 @@ export default {
       const vm = this;
       const api = `${process.env.APIPATH}/admin/signin`;
       vm.$http.post(api, vm.user).then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.success) {
           // * 儲存 token and expired 方法
           const token = response.data.token;

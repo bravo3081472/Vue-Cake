@@ -81,7 +81,7 @@ export default {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/order/${vm.orderId}`;
       this.$http.get(api).then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         vm.order = response.data.order;
       });
     },
@@ -90,7 +90,7 @@ export default {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${process.env.VUECAKE}/pay/${vm.orderId}`;
       this.$http.post(api).then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.success) {
           vm.GetOrder();
           vm.$router.push('/cake-test/customerOrders');

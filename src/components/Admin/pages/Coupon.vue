@@ -200,7 +200,7 @@ export default {
           break;
       }
       this.$http[httpMethod](api, { data: newCoupon }).then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         $('#CouponModal').modal('hide');
         vm.Coupons = response.data.coupons;
         this.GetCoupons();
@@ -212,7 +212,7 @@ export default {
       const vm = this;
       vm.isLoading = true;
       this.$http.get(api).then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         vm.Coupons = response.data.coupons;
         vm.pagination = response.data.pagination;
         vm.isLoading = false;
