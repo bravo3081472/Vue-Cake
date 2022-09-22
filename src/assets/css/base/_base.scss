@@ -12,3 +12,11 @@
 .nav-link {
   margin: 0 1em !important;
 }
+
+.active {
+  border-bottom: 1px solid #000;
+}
+
+.avoid-scrollbar-push {
+  margin-right: calc(100% - 100vw);
+}

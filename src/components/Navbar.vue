@@ -1,9 +1,11 @@
 <template>
   <div>
     <header>
-      <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+      <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light avoid-scrollbar-push">
         <div class="container-md">
-          <a class="navbar-brand logo" href="#">Cake Test</a>
+          <router-link class="navbar-brand logo" to="/cake-test">Cake Test
+            <span class="sr-only">(current)</span>
+          </router-link>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
@@ -13,13 +15,15 @@
 
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mx-auto">
-              <li class="nav-item active">
+              <li class="nav-item" :class="{ 'active': state === 'index' }"
+                @click="state = 'index'">
                 <router-link class="nav-link" to="/cake-test">首頁
                   <span class="sr-only">(current)</span>
                 </router-link>
               </li>
-              <li class="nav-item">
-                <router-link class="nav-link active" :to="{ name: 'CustomerOrders' }">商品一覽
+              <li class="nav-item" :class="{ 'active': state === 'CustomerOrders' }"
+                @click="state = 'CustomerOrders'">
+                <router-link class="nav-link" :to="{ name: 'CustomerOrders' }">商品一覽
                   <span class="sr-only">(current)</span>
                 </router-link>
               </li>
@@ -47,9 +51,11 @@ export default {
   components: {
     LoadModal,
   },
+  data() {
+    return {
+      state: 'index',
+    };
+  },
 };
 </script>
 
-<style lang="scss">
-
-</style>

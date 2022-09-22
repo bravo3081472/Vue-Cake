@@ -6,7 +6,7 @@
     <table class="table table-responsive-sm mt-5 toggle-show">
       <thead class="thead-dark">
         <tr>
-          <th class="toggle-show"></th>
+          <th class="toggle-hide"></th>
           <th>建立時間</th>
           <th>訂單ID</th>
           <th>是否付款</th>

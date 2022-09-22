@@ -92,8 +92,8 @@
         </div>
       </footer>
 
-      <button class="btn btn-outline-primary open-cart__button" data-toggle="modal"
-        data-target="#CartModal">
+      <button class="btn btn-outline-primary open-cart__button avoid-scrollbar-push"
+        data-toggle="modal" data-target="#CartModal">
         <i class="fa-solid fa-cart-shopping"></i>
       </button>
       <!-- NOTE: component - "CartModal" -->
