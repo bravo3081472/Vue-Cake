@@ -1,9 +1,7 @@
-'use strict'
+'use strict';
 module.exports = {
-  NODE_ENV: '"production"'
-}
-module.exports = merge(prodEnv, {
-  NODE_ENV: '"development"',
+  NODE_ENV: '"production"',
   APIPATH: '"https://vue-course-api.hexschool.io"',
   VUECAKE: '"vuecake"',
-});
+};
+
